@@ -15,10 +15,8 @@ function App() {
       const data = await response.json();
       
       if (data.cod === '200') {
-        // Successful response
         setForecastData(data);
       } else {
-        // Handle error responses (e.g., "city not found")
         alert(data.message);
       }
     } catch (error) {

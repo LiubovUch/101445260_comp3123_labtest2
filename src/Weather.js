@@ -1,12 +1,11 @@
 import React from 'react';
 
 function Weather({ data }) {
-  // Group the forecast data by day
   const groupByDay = () => {
     const groupedData = {};
     
     data.list.forEach(item => {
-      const date = item.dt_txt.split(' ')[0]; // Extract date (YYYY-MM-DD)
+      const date = item.dt_txt.split(' ')[0]; 
       if (!groupedData[date]) groupedData[date] = [];
       groupedData[date].push(item);
     });
@@ -19,12 +18,11 @@ function Weather({ data }) {
   return (
     <div className="forecast-container">
       {Object.entries(groupedData).map(([date, entries], index) => {
-        // Calculate daily averages (e.g., temperature, condition)
         const avgTemp = (
           entries.reduce((sum, entry) => sum + entry.main.temp, 0) / entries.length
         ).toFixed(1);
 
-        const mainCondition = entries[0].weather[0].main; // Use first entry's condition
+        const mainCondition = entries[0].weather[0].main; 
         const icon = entries[0].weather[0].icon;
 
         return (
